@@ -1,4 +1,10 @@
-export const SearchBar = ({ onSearch }) => {
+import React from "react";
+
+interface SearchBarProps {
+  onSearch: (input: string) => void;
+}
+
+export const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   return (
     <input
       type="text"
