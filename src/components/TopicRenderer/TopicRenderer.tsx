@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { TopicCard } from "@components/TopicCard";
 import { SearchBar } from "@components/SearchBar";
-import useIndexedDB from "hooks/useIndexedDB";
+import useIndexedDB from "hooks/useIndexedDB/useIndexedDB";
+import styles from "./TopicRenderer.module.css";
 
 export const TopicRenderer = () => {
   const { cards, isLoading } = useIndexedDB();
@@ -31,11 +32,13 @@ export const TopicRenderer = () => {
   if (isLoading) return <div>Загрузка...</div>;
 
   return (
-    <div className="card-list">
+    <div className={styles.mainList}>
       <SearchBar onSearch={searchInput} />
+      <div className={styles.cardList}>
       {(filteredCards.length > 0 ? filteredCards : cards).map((card: Card) => (
         <TopicCard key={card.id} card={card} />
       ))}
+      </div>
     </div>
   );
 };
