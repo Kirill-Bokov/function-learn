@@ -16,6 +16,9 @@
 
 body {
   font-family: 'Roboto', sans-serif;
+  background-color: #FAFAF9;
+  color: #1E1E1E;
+  margin: 0%;
 }
 
 .header {
@@ -23,6 +26,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
+  background-color: #f0f0f0;
 }
 
 .header__logo {

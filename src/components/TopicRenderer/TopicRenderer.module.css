@@ -1,0 +1,16 @@
+.mainList {
+    margin-top: 5vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cardList {
+    margin-top: 5vh;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    justify-content: center;
+    width: 700px;
+}
