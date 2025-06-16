@@ -1,36 +1,7 @@
 import { useEffect, useState } from "react"
 import { DB_NAME, STORE_NAME, DB_VERSION } from "./constants"
-
-interface Card {
-  id: string
-  title: string
-  description: string
-  [key: string]: unknown
-}
-
-const initialCards: Card[] = [
-  {
-    id: "1",
-    title: "Привет, мир!",
-    description: "Для того, чтобы написать Привет мир, нужен простой советский...",
-  },
-  {
-    id: "2",
-    title: "React Router",
-    description: "Внуки без ума от React Router! А я всего лишь...",
-  },
-  {
-    id: "4",
-    title: "Переменные в JS",
-    description: "Этот способ объявления переменных в js запрещён во многих странах! Узнай, как использовать его в своём проекте",
-  },
-  {
-    id: "5",
-    title: "Переменные в JS",
-    description: "Этот приём с map() в JavaScript был засекречен с 2005 года. Теперь он доступен всем",
-    image: "https://cdnjs.cloudflare.com/ajax/libs/browser-logos/75.0.1/node.js/node.js.svg"
-  },
-]
+import { Card } from "shared/types"
+import { initialCards } from "./constants"
 
 const useIndexedDB = () => {
   const [cards, setCards] = useState<Card[]>([])
@@ -52,6 +23,7 @@ const useIndexedDB = () => {
         initialCards.forEach(card => objStore.add(card))
 
         tx.oncomplete = () => {
+          console.log("Начальные данные записаны")
         }
         tx.onerror = event => {
           console.error("Ошибка записи начальных данных:", (event.target as IDBRequest).error)
@@ -74,10 +46,11 @@ const useIndexedDB = () => {
       loadCards()
         .then(cardsFromDB => {
           setCards(cardsFromDB)
-          setIsLoading(false)
         })
         .catch(error => {
           console.error("Ошибка чтения из IndexedDB:", error)
+        })
+        .finally(() => {
           setIsLoading(false)
         })
     }
