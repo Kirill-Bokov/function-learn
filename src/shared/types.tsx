@@ -1,6 +1,12 @@
-export interface Card {
-    id: string;
-    title: string;
-    description: string;
-    [key: string]: unknown;
-  }
+export type ContentBlock = {
+  type: "text" | "image" | "code"
+  value: string
+}
+
+export type Card = {
+  id: string
+  title: string
+  description: string
+  image?: string
+  content: ContentBlock[]
+}

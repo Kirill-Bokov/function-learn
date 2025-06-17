@@ -1,5 +1,5 @@
 import { useContext, useState, useRef, useEffect } from "react"
-import LanguageContext from "LanguageContext"
+import LanguageContext from "@/LanguageContext"
 
 const options: { value: "ru" | "en"; label: string; icon: string }[] = [
   { value: "ru", label: "Русский", icon: "https://flagcdn.com/w40/ru.png" },
