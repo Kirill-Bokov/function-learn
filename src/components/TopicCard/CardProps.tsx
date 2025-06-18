@@ -1,9 +1,5 @@
+import { Card } from "@/shared/types";
+
 export interface CardProps {
-    card: {
-      id: string;
-      title: string;
-      description: string;
-      image?: string;
-    };
-  }
-  
+  card: Card; 
+}
