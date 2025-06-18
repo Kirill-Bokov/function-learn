@@ -1,0 +1,36 @@
+.topicPageDescription {
+    margin-top: 5vh;
+    padding-left: 25vw;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    max-width: 900px;
+}
+
+.homeButton {
+    width: 24px;
+    height: 24px;
+    transition: opacity 0.3s ease;
+}
+.homeButton:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+.topicPageContent {
+    padding-left: 25vw;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+}
+
+img {
+    max-width: 800px;
+}
+
+p {
+    font-size: large;
+}
+
+pre {
+    font-size: large;
+}

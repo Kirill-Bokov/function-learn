@@ -1,0 +1,1 @@
+export { TopicPageRenderer } from "./TopicPageRenderer";
