@@ -1,22 +1,24 @@
-import { Card, ContentBlock } from "@/shared/types";
+import { Card, ContentBlock, LocalizedString } from "@/shared/types";
+import { Language } from "@/shared/types";
 
-const renderBlock = (block: ContentBlock, index: number) => {
+
+const renderBlock = (block: ContentBlock, index: number, language: Language) => {
   switch (block.type) {
     case "text":
-      return <p key={index}>{block.value}</p>;
+      return <p key={index}>{(block.value as LocalizedString)[language]}</p>;
     case "code":
       return (
         <pre key={index}>
-          <code>{block.value}</code>
+          <code>{(block.value as LocalizedString)[language]}</code>
         </pre>
       );
     case "image":
-      return <img key={index} src={block.value} alt="Изображение" />;
+      return <img key={index} src={block.value as string} alt="Изображение" />;
     default:
       return null;
   }
 };
 
-export const TopicPageRenderer = ({ card }: { card: Card }) => {
-  return <div>{card.content.map(renderBlock)}</div>;
+export const TopicPageRenderer = ({ card, language }: { card: Card; language: Language }) => {
+  return <div>{card.content.map((block, index) => renderBlock(block, index, language))}</div>;
 };
