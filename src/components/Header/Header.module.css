@@ -21,11 +21,6 @@
     cursor: pointer;
   }
   
-  .dropdown__icon {
-    width: 24px;
-    height: 18px;
-  }
-  
   .dropdown__list {
     position: absolute;
     right: 0;
@@ -37,18 +32,8 @@
     list-style: none;
     z-index: 10;
   }
-  
-  .dropdown__item {
-    display: flex;
-    align-items: center;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  
-  .dropdown__item:hover {
-    background-color: #f0f0f0;
-  }
-  
-  .dropdown__item img {
-    margin-right: 8px;
+
+  .dropdown__icon {
+    width: 24px;
+    height: 18px;
   }

@@ -1,15 +1,15 @@
-import { Card, ContentBlock } from "@/shared/types";
+import { Card, ContentBlock, LocalizedString } from "@/shared/types";
 import { Language } from "@/shared/types";
 
 
 const renderBlock = (block: ContentBlock, index: number, language: Language) => {
   switch (block.type) {
     case "text":
-      return <p key={index}>{(block.value as { ru: string; en: string })[language]}</p>;
+      return <p key={index}>{(block.value as LocalizedString)[language]}</p>;
     case "code":
       return (
         <pre key={index}>
-          <code>{(block.value as { ru: string; en: string })[language]}</code>
+          <code>{(block.value as LocalizedString)[language]}</code>
         </pre>
       );
     case "image":
