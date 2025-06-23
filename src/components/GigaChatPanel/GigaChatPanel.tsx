@@ -3,6 +3,8 @@ import styles from "./GigaChatPanel.module.css";
 import { LanguageContext } from "@/LanguageContext";
 import { Language } from "@/shared/types";
 import { translations } from "./consts";
+import ReactMarkdown from "react-markdown";
+
 export const GigaChatPanel = ({ prompt }: { prompt: string }) => {
   const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(false);
@@ -50,7 +52,7 @@ export const GigaChatPanel = ({ prompt }: { prompt: string }) => {
     <div className={styles.gigaChatPanel}>
       <strong>{t.title}</strong>
       {onDebounse && <p>{t.waiting}</p>}
-      {loading ? <p>{t.thinking}</p> : <p>{response}</p>}
+      {loading ? <p>{t.thinking}</p> : <ReactMarkdown>{response}</ReactMarkdown>}
     </div>
   );
 };
