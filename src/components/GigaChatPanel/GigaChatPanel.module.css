@@ -1,0 +1,13 @@
+.gigaChatPanel {
+  margin-top: 5vh;
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  justify-content: center;
+  width: 700px;
+  padding-left: 1vw;
+}
+
+.gigaChatPanel pre {
+  font-size: 18px;
+}
