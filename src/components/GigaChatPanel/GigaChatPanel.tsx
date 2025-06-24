@@ -8,24 +8,26 @@ import ReactMarkdown from "react-markdown";
 export const GigaChatPanel = ({ prompt }: { prompt: string }) => {
   const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(false);
-  const [onDebounse, setOnDebounse] = useState(true);
+  const [gigaChatHint, setGigaChatHint] = useState(true);
   const { language } = useContext(LanguageContext);
   const t = translations[language] || translations["ru"];
-  
+
+  const getPromptLanguage = (language: Language) => {
+    switch (language) {
+      case "ru":
+        return "Дай рекомендации, что можно почитать по этой теме в контексте фронтенд-разработки, ответ максимум 150 слов: ";
+      case "en":
+        return "Give recommendations on what can be read on this topic in the context of frontend development, the answer is maximum 150 words: ";
+      default:
+        return "Дай рекомендации, что можно почитать по этой теме в контексте фронтенд-разработки, ответ максимум 150 слов: ";
+    }
+  };
+
   useEffect(() => {
     if (!prompt.trim()) return;
-
-    const getPromptLanguage = (language: Language) => {
-      if (language === "ru")
-        return "Дай рекомендации, что можно почитать по этой теме в контексте фронтенд-разработки, ответ максимум 150 слов: ";
-      if (language === "en")
-        return "Give recommendations on what can be read on this topic in the context of frontend development, the answer is maximum 150 words: ";
-      return "";
-    };
-
     const localizedPrompt = getPromptLanguage(language) + prompt;
     const ask = async () => {
-      setOnDebounse(false);
+      setGigaChatHint(false);
       setLoading(true);
       try {
         const res = await fetch("http://localhost:3001/send", {
@@ -42,6 +44,7 @@ export const GigaChatPanel = ({ prompt }: { prompt: string }) => {
         setResponse("Ошибка: " + (e.message || "неизвестная"));
       } finally {
         setLoading(false);
+        setGigaChatHint(true);
       }
     };
 
@@ -51,8 +54,12 @@ export const GigaChatPanel = ({ prompt }: { prompt: string }) => {
   return (
     <div className={styles.gigaChatPanel}>
       <strong>{t.title}</strong>
-      {onDebounse && <p>{t.waiting}</p>}
-      {loading ? <p>{t.thinking}</p> : <ReactMarkdown>{response}</ReactMarkdown>}
+      {gigaChatHint && <p>{t.waiting}</p>}
+      {loading ? (
+        <p>{t.thinking}</p>
+      ) : (
+        <ReactMarkdown>{response}</ReactMarkdown>
+      )}
     </div>
   );
 };
