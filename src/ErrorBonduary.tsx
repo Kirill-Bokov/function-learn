@@ -20,6 +20,10 @@ const ErrorFallback = ({ error, resetErrorBoundary }: FallbackProps) => {
       message = 'Ресурс не найден (404)'
       image = '/img/404.png'
       break
+    case 418:
+      message = 'Я - чайник (418)'
+      image = '/img/418.png'
+      break
     case 500:
       message = 'Внутренняя ошибка сервера (500)'
       image = '/img/500.png'
@@ -51,7 +55,7 @@ export const AppErrorBoundary = ({ children }: AppErrorBoundaryProps) => {
     <ErrorBoundary
       FallbackComponent={ErrorFallback}
       onReset={() => {
-        // Например, window.location.reload()
+        window.location.reload()
       }}
     >
       {children}
