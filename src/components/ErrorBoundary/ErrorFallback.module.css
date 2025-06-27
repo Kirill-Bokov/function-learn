@@ -1,0 +1,34 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    gap: 1rem;
+  }
+  
+  .image {
+    max-width: 30vw;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  
+  .button {
+    padding: 0.5rem 1.2rem;
+    font-size: 1rem;
+    background-color: #004080;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .button:hover {
+    background-color: #0066cc;
+  }
+  
+  .button:active {
+    background-color: #003366;
+  }
+  

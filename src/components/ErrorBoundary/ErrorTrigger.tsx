@@ -1,4 +1,5 @@
 import { useState } from "react"
+import styles from "./ErrorTrigger.module.css"
 
 export const ErrorTrigger = () => {
   const [error, setError] = useState<Error | null>(null)
@@ -16,18 +17,19 @@ export const ErrorTrigger = () => {
     const data = await res.json()
     console.log("Успешный ответ:", data)
   }
+
   if (error) throw error
 
   return (
     <div>
-      <h3>Тест ошибок</h3>
-      <div style={{ display: "flex", gap: "1rem" }}>
-        <button onClick={() => triggerError(400)}>400</button>
-        <button onClick={() => triggerError(403)}>403</button>
-        <button onClick={() => triggerError(404)}>404</button>
-        <button onClick={() => triggerError(418)}>418</button>
-        <button onClick={() => triggerError(500)}>500</button>
-        <button onClick={() => triggerError(504)}>504</button>
+      <h3 className={styles.errorTestH3}>Тест ошибок</h3>
+      <div className={styles.container}>
+        <button className={styles.button} onClick={() => triggerError(400)}>400</button>
+        <button className={styles.button} onClick={() => triggerError(403)}>403</button>
+        <button className={styles.button} onClick={() => triggerError(404)}>404</button>
+        <button className={styles.button} onClick={() => triggerError(418)}>418</button>
+        <button className={styles.button} onClick={() => triggerError(500)}>500</button>
+        <button className={styles.button} onClick={() => triggerError(504)}>504</button>
       </div>
     </div>
   )
