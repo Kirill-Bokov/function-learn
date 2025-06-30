@@ -30,3 +30,14 @@ git clone https://github.com/your-username/function-learn.git
 cd function-learn
 npm install
 npm run dev
+```
+Открой в браузере http://localhost:5173
+
+## Настройка моков и эмуляция ошибок
+Для симуляции HTTP-ошибок (400, 403, 404, 418, 500, 504) используется Requestly
+пример правила в Requestly:
+```
+Rule Type: Modify API Response
+URL Contains: localhost:5173/error500
+Status Code: 500
+Body: { "message": "Internal Server Error" }
