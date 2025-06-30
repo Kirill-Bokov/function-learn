@@ -1,7 +1,12 @@
 import { FallbackProps } from "react-error-boundary";
 import styles from "./ErrorFallback.module.css";
 
-const statusMap: Record<number, { message: string; image: string }> = {
+interface stausDescription {
+  message: string;
+  image: string;
+}
+
+const statusMap: Record<number, stausDescription> = {
   400: { message: "Некорректный запрос (400)", image: "/img/400.png" },
   403: { message: "Доступ запрещён (403)", image: "/img/403.png" },
   404: { message: "Ресурс не найден (404)", image: "/img/404.png" },
